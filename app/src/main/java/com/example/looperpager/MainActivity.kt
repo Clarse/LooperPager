@@ -1,5 +1,6 @@
 package com.example.looperpager
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +21,14 @@ class MainActivity : AppCompatActivity() {
         val random = Random()
         //准备数据
         for (index in 0 until 5) {
-            sColors.add(random.nextInt(255))
+            sColors.add(
+                Color.argb(
+                    random.nextInt(255),
+                    random.nextInt(255),
+                    random.nextInt(255),
+                    random.nextInt(255)
+                )
+            )
         }
 
         //给适配器设置数据
