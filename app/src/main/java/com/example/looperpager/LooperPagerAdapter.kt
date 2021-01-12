@@ -10,8 +10,9 @@ class LooperPagerAdapter : PagerAdapter() {
     private lateinit var mColors: MutableList<Int>
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val realPosition = position % mColors.size
         val imageView = ImageView(container.context)
-        imageView.setBackgroundColor(mColors[position])
+        imageView.setBackgroundColor(mColors[realPosition])
         container.addView(imageView)
         return imageView
     }
@@ -22,7 +23,7 @@ class LooperPagerAdapter : PagerAdapter() {
 
     override fun getCount(): Int {
         if (::mColors.isInitialized) {
-            return mColors.size
+            return Int.MAX_VALUE
         }
         return 0
     }
@@ -33,5 +34,12 @@ class LooperPagerAdapter : PagerAdapter() {
 
     fun setData(sColors: MutableList<Int>) {
         this.mColors = sColors
+    }
+
+    fun getDataRealSize(): Int {
+        if (::mColors.isInitialized) {
+            return mColors.size
+        }
+        return 0;
     }
 }
