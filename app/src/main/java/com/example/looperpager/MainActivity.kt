@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity(), MyViewPager.OnViewPagerTouchListener,
         setContentView(R.layout.activity_main)
 
         val random = Random()
-        //准备数据
-        for (index in 0 until 5) {
+        //准备数
+        repeat(5) {
             sColors.add(
                 Color.argb(
                     random.nextInt(255),
